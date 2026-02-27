@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cleitondoraio | Venda de Bots </title>
+<link rel="icon" type="image/png" href="logo.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0a0a0f;
+    color:white;
+    overflow-x:hidden;
+    padding-top:90px;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(12px);
+    z-index:1000;
+}
+
+nav .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+}
+
+/* LOGO */
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo img{
+    width:42px;
+    height:42px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid rgba(139,92,246,0.6);
+}
+
+.logo h2{
+    font-weight:800;
+    font-size:22px;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    padding:140px 0;
+    text-align:center;
+    background:#000;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle, rgba(139,92,246,0.35) 0%, transparent 70%);
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    filter:blur(120px);
+    pointer-events:none; /* CORREÇÃO DO BUG */
+}
+
+.hero h1{
+    font-size:clamp(48px,6vw,88px);
+    font-weight:800;
+}
+
+.hero h2{
+    margin-top:28px;
+    font-size:clamp(18px,2vw,24px);
+    color:#b5b5c3;
+    font-weight:400;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#5b8cff,#d946ef);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.buttons{
+    margin-top:40px;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.btn{
+    padding:16px 32px;
+    border-radius:12px;
+    text-decoration:none;
+    display:inline-block;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(90deg,#5b8cff,#d946ef);
+    color:white;
+}
+
+.btn-secondary{
+    background:#1a1a22;
+    border:1px solid #333;
+    color:white;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+/* STATS */
+.stats{
+    display:flex;
+    justify-content:center;
+    gap:60px;
+    margin-top:60px;
+    flex-wrap:wrap;
+}
+
+.stats h2{
+    font-size:48px;
+    font-weight:800;
+    background:linear-gradient(90deg,#5b8cff,#d946ef);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* SECTIONS */
+.section{
+    padding:120px 0;
+    background:#000;
+}
+
+.section h2{
+    text-align:center;
+    font-size:clamp(36px,4vw,56px);
+    margin-bottom:80px;
+}
+
+/* CARDS GRID */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:30px;
+}
+
+.card{
+    grid-column: span 2;
+    background:rgba(255,255,255,0.04);
+    padding:35px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.08);
+    transition:.3s;
+}
+
+.card:nth-child(4){
+    grid-column: 2 / span 2;
+}
+
+.card:nth-child(5){
+    grid-column: 4 / span 2;
+}
+
+.card:hover{
+    border-color:rgba(139,92,246,0.7);
+    transform:translateY(-6px);
+}
+
+.card-icon{
+    width:60px;
+    height:60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    margin-bottom:20px;
+    background:linear-gradient(135deg, rgba(139,92,246,0.15), rgba(217,70,239,0.15));
+    border:1px solid rgba(139,92,246,0.4);
+}
+
+.card-icon i{
+    width:28px;
+    height:28px;
+    color:#a855f7;
+}
+
+/* REVIEWS */
+.reviews{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:40px;
+}
+
+.review-card{
+    padding:50px;
+    border-radius:24px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    transition:0.3s;
+}
+
+.review-card:hover{
+    border-color:rgba(139,92,246,0.7);
+    transform:translateY(-8px);
+}
+
+.stars{
+    display:flex;
+    gap:6px;
+    margin-bottom:25px;
+}
+
+.stars svg{
+    width:20px;
+    height:20px;
+    fill:#a855f7;      /* COR INTERNA */
+    stroke:#a855f7;    /* COR DA BORDA */
+}
+
+.review-card p{
+    font-size:17px;
+    line-height:1.7;
+    color:#d6d6f0;
+    margin-bottom:35px;
+}
+
+.review-user{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.review-user img{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:2px solid rgba(139,92,246,0.6);
+}
+
+.review-user strong{
+    display:block;
+    font-size:18px;
+    font-weight:700;
+}
+
+.review-user span{
+    font-size:14px;
+    color:#9f9fbb;
+}
+
+
+/* COMO FUNCIONA */
+
+.steps{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:60px;
+    position:relative;
+    flex-wrap:wrap;
+    margin-top:60px;
+}
+
+.step{
+    width:320px;
+    padding:45px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    text-align:center;
+    transition:.3s;
+}
+
+.step:hover{
+    border-color:rgba(139,92,246,0.7);
+    transform:translateY(-8px);
+}
+
+.step-number{
+    width:60px;
+    height:60px;
+    font-size:20px;
+    font-weight:800;
+    background:linear-gradient(90deg,#5b8cff,#d946ef);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 25px;
+    box-shadow:0 0 25px rgba(139,92,246,0.5);
+}
+
+.step h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.step p{
+    color:#b8b8d9;
+    line-height:1.6;
+}
+
+
+
+
+/* DEMONSTRAÇÃO */
+
+.demo-wrapper{
+    display:flex;
+    justify-content:center;
+    margin-top:60px;
+}
+
+.discord-demo{
+    width:800px;
+    max-width:100%;
+    background:#1e1f22;
+    border-radius:20px;
+    padding:40px;
+    border:1px solid rgba(255,255,255,0.08);
+    box-shadow:0 0 60px rgba(139,92,246,0.15);
+}
+
+.message{
+    margin-bottom:30px;
+}
+
+.username{
+    font-weight:700;
+    font-size:14px;
+    color:#b5b5c3;
+}
+
+.bot-name{
+    color:#a855f7;
+}
+
+.message p{
+    margin-top:8px;
+    font-size:16px;
+}
+
+.embed{
+    margin-top:12px;
+    background:#2b2d31;
+    padding:20px;
+    border-radius:12px;
+    border-left:4px solid #a855f7;
+}
+
+.embed h4{
+    margin-bottom:10px;
+    font-size:16px;
+}
+
+
+
+/* CTA SECTION */
+
+.cta-section{
+    position:relative;
+    text-align:center;
+    padding:90px 0; /* DIMINUI AQUI */
+    background:#000;
+    overflow:hidden;
+}
+
+.cta-section h2{
+    margin-bottom:20px;
+}
+
+.cta-section::before{
+    display:none;
+}
+
+.cta-subtitle{
+    margin-top:25px;
+    font-size:20px;
+    color:#b5b5c3;
+}
+
+.cta-buttons{
+    margin-top:50px;
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.cta-buttons .btn{
+    padding:18px 40px;
+    font-size:18px;
+}
+
+
+
+
+
+
+
+footer{
+    padding:100px 0;
+    background:#000;
+    text-align:center;
+    color:#b8b8d9;
+}
+
+
+
+</style>
+</head>
+
+
+<body>
+
+<nav>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            <h2>cleitondoraio.</h2>
+        </div>
+    </div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<h1>Bots Personalizados<br><span class="gradient">para Discord</span></h1>
+<h2>Automatize seu servidor com sistemas exclusivos e profissionais.</h2>
+
+<div class="buttons">
+<a class="btn btn-primary" href="https://discord.gg/UUc65Acjqh">
+Solicitar Orçamento
+</a>
+
+<a href="#funcionalidades" class="btn btn-secondary">
+Ver Funcionalidades
+</a>
+</div>
+
+<div class="stats">
+<div><h2>100+</h2><p>Bots Criados</p></div>
+<div><h2>50+</h2><p>Clientes Satisfeitos</p></div>
+<div><h2>24/7</h2><p>Suporte</p></div>
+</div>
+</div>
+</section>
+
+
+<section class="section">
+<div class="container">
+<h2>Demonstração do <span class="gradient">Bot</span></h2>
+
+<div class="demo-wrapper">
+
+<div class="discord-demo">
+
+<div class="message user">
+<span class="username">Usuario</span>
+<p>/rank</p>
+</div>
+
+<div class="message bot">
+<span class="username bot-name">BOT DEMO</span>
+<div class="embed">
+<h4>🏆 Ranking do Servidor</h4>
+<p>1️⃣ Gabriel - 1250 XP</p>
+<p>2️⃣ Maria - 980 XP</p>
+<p>3️⃣ Lucas - 870 XP</p>
+</div>
+</div>
+
+<div class="message user">
+<span class="username">Usuario</span>
+<p>/ticket abrir</p>
+</div>
+
+<div class="message bot">
+<span class="username bot-name">BOT DEMO</span>
+<div class="embed">
+<h4>🎫 Ticket Criado</h4>
+<p>Seu ticket foi aberto com sucesso.</p>
+<p>Nossa equipe irá responder em breve.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<section id="funcionalidades" class="section">
+<div class="container">
+<h2>Funcionalidades <span class="gradient">Premium</span></h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="card-icon"><i data-lucide="settings"></i></div>
+<h3>Sistemas Personalizados</h3>
+<p>Comandos exclusivos feitos sob medida.</p>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="trophy"></i></div>
+<h3>Sistema de Ranking</h3>
+<p>XP, níveis e leaderboard automático.</p>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="file-text"></i></div>
+<h3>Logs Automáticos</h3>
+<p>Monitoramento completo do servidor.</p>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="life-buoy"></i></div>
+<h3>Sistema de Tickets</h3>
+<p>Suporte organizado e profissional.</p>
+</div>
+
+<div class="card">
+<div class="card-icon"><i data-lucide="shield"></i></div>
+<h3>Moderação Inteligente</h3>
+<p>Proteção contra spam e raids.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+<section class="section">
+<div class="container">
+<h2>Como <span class="gradient">Funciona</span></h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-number">01</div>
+<h3>Explique sua ideia</h3>
+<p>Conte exatamente como você quer seu bot, funcionalidades e objetivos.</p>
+</div>
+
+<div class="step">
+<div class="step-number">02</div>
+<h3>Desenvolvimento</h3>
+<p>Desenvolvemos seu bot do zero com código otimizado e profissional.</p>
+</div>
+
+<div class="step">
+<div class="step-number">03</div>
+<h3>Entrega</h3>
+<p>Você recebe o bot pronto, configurado e com suporte garantido.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+
+
+
+<section class="section">
+<div class="container">
+<h2>Avaliações dos <span class="gradient">Clientes</span></h2>
+
+<div class="reviews">
+
+<div class="review-card">
+<div class="stars">
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+</div>
+<p>Avaliação 1</p>
+<div class="review-user">
+<img src="https://cdn.discordapp.com/embed/avatars/0.png">
+<div>
+<strong>Nome 1</strong>
+<span>Cargo 1</span>
+</div>
+</div>
+</div>
+
+<div class="review-card">
+<div class="stars">
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+</div>
+<p>Avaliação 2</p>
+<div class="review-user">
+<img src="https://cdn.discordapp.com/embed/avatars/2.png">
+<div>
+<strong>Nome 2</strong>
+<span>Cargo 2</span>
+</div>
+</div>
+</div>
+
+<div class="review-card">
+<div class="stars">
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+<i data-lucide="star"></i>
+</div>
+<p>AVALIACAO PARA TESTES, ESSE BOT É MT BOM E TAL TAL TAL</p>
+<div class="review-user">
+<img src="https://cdn.discordapp.com/embed/avatars/4.png">
+<div>
+<strong>Nome 3</strong>
+<span>VENDO EMPRESAS</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<section class="section cta-section">
+<div class="container">
+
+<h2>Pronto para ter seu <span class="gradient">PROPRIO BOT?</span></h2>
+<p class="cta-subtitle">
+Entre no meu servidor ou fale diretamente comigo para começar agora mesmo.
+</p>
+
+<div class="cta-buttons">
+<a href="https://discord.gg/UUc65Acjqh" class="btn btn-primary">
+Entrar no Servidor
+</a>
+
+<a href="https://discord.com/channels/@me" class="btn btn-secondary">
+Falar Comigo
+</a>
+</div>
+
+</div>
+</section>
+
+
+
+
+
+<footer>
+© 2026 - Todos os direitos reservados
+</footer>
+
+<script>
+lucide.createIcons();
+</script>
+
+</body>
+</html>
