@@ -10,7 +10,6 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <script>
-
 const userLang = navigator.language || navigator.userLanguage;
 
 if(userLang.startsWith('en')) {
@@ -25,7 +24,6 @@ if(userLang.startsWith('en')) {
     document.querySelector('.cta-buttons .btn-primary').innerText = 'Join the Server';
     document.querySelector('.cta-buttons .btn-secondary').innerText = 'Talk to Me';
 }
-
 </script>
 
 <style>
@@ -715,6 +713,25 @@ Falar Comigo
 
 <script>
 lucide.createIcons();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const userLang = navigator.language || navigator.userLanguage;
+
+    if(userLang.startsWith('en')) {
+        document.querySelector('.hero h1').innerHTML = 'Custom Bots<br><span class="gradient">for Discord</span>';
+        document.querySelector('.hero h2').innerText = 'Automate your server with exclusive and professional systems.';
+
+        document.querySelector('.buttons .btn-primary').innerText = 'Request a Quote';
+        document.querySelector('.buttons .btn-secondary').innerText = 'See Features';
+
+        document.querySelector('.cta-section h2').innerHTML = 'Ready to have your <span class="gradient">OWN BOT?</span>';
+        document.querySelector('.cta-subtitle').innerText = 'Join my server or contact me directly to get started now.';
+        document.querySelector('.cta-buttons .btn-primary').innerText = 'Join the Server';
+        document.querySelector('.cta-buttons .btn-secondary').innerText = 'Talk to Me';
+    }
+});
 </script>
 
 </body>
