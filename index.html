@@ -4,10 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>cleitondoraio | Venda de Bots </title>
-<link rel="icon" type="image/png" href="logo2.png">
+<link rel="icon" type="image/png" href="logo.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
+
+<script>
+
+const userLang = navigator.language || navigator.userLanguage;
+
+if(userLang.startsWith('en')) {
+    document.querySelector('h1').innerHTML = 'Custom Bots<br><span class="gradient">for Discord</span>';
+    document.querySelector('h2').innerText = 'Automate your server with exclusive and professional systems.';
+
+    document.querySelector('.btn-primary').innerText = 'Request a Quote';
+    document.querySelector('.btn-secondary').innerText = 'See Features';
+
+    document.querySelector('.cta-section h2').innerHTML = 'Ready to have your <span class="gradient">OWN BOT?</span>';
+    document.querySelector('.cta-subtitle').innerText = 'Join my server or contact me directly to get started now.';
+    document.querySelector('.cta-buttons .btn-primary').innerText = 'Join the Server';
+    document.querySelector('.cta-buttons .btn-secondary').innerText = 'Talk to Me';
+}
+
+</script>
 
 <style>
 *{
@@ -699,5 +718,4 @@ lucide.createIcons();
 </script>
 
 </body>
-
 </html>
